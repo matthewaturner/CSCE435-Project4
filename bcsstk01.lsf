@@ -1,0 +1,16 @@
+#BSUB -J tri                # job name 'tri'
+#BSUB -L /bin/bash          # use bash
+#BSUB -W 5                  # wall clock limit 5 minutes
+#BSUB -n 1                  # Request 1 core
+#BSUB -R "span[ptile=1]"    # Request 1 core per node.
+#BSUB -R "rusage[mem=8000]" # Request 8000MB per process (CPU) for the job
+#BSUB -M 8000               # Set the per process memory limit to 8000MB.
+#BSUB -o bcsstk01.out       # Send stdout and stderr to "bcsstk01.out"
+#BSUB -R "select[gpu]"      # Request a node with a GPU
+
+module purge
+module load CUDA/8.0.44
+module load GCC/5.2.0
+module list
+# just run tiny and bcsstk01 matrices
+make

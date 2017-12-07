@@ -1,0 +1,4 @@
+#!/bin/csh
+./tri_run \
+	/scratch/group/csce435/Matrix/ssget/Mallya/lhr71_adj.tsv \
+	/scratch/group/csce435/Matrix/snap/email-EuAll/email-EuAll_adj.tsv

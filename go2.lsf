@@ -1,0 +1,17 @@
+#BSUB -J tri2               # job name 'tri2'
+#BSUB -L /bin/bash          # use bash
+#BSUB -W 5                  # wall clock limit 5 minutes
+#BSUB -n 1                  # Request 1 core
+#BSUB -R "span[ptile=1]"    # Request 1 core per node.
+#BSUB -R "rusage[mem=8000]" # Request 8000MB per process (CPU) for the job
+#BSUB -M 8000               # Set the per process memory limit to 8000MB.
+#BSUB -o go2.%J             # Send stdout and stderr to "go2.[jobID]"
+#BSUB -R "select[gpu]"      # Request a node with a GPU
+
+# run two medium sized matrices, for development
+module purge
+module load CUDA/8.0.44
+module load GCC/5.2.0
+module list
+make
+./go2
